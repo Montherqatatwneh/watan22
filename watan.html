@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .div {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            font-size: 100%;
+            margin-top: 0px;
+	font-family: 'Cairo', sans-serif;
+        }
+
+      
+
+        .a {
+            display: grid;
+            gap: 10px;
+        }
+
+        .b {
+            display: grid;
+            gap: 14px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number {
+            border-radius: 25px;
+            padding: 5px;
+            background-color: rgba(218, 217, 217, 0.284);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="droid-arabic-kufi">
+
+        <div class="div" id="demo"></div>
+
+        <script>
+            const demo = $("#demo")
+            // Set the date we're counting down to
+            var countDownDate = new Date("jun 19, 2022 13:00:00").getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function () {
+
+                demo.html("")
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result in an element with id="demo" 
+                // document.getElementById("demo").innerHTML = " الوقت المتبقي لتخرج دفعة وطن " + days + "D " + hours + "H "
+                //     + minutes + "M " + seconds + "S";
+                var div = $(
+                    `
+                    <div class="all">
+                        <div class="header">
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>   
+                            <p><b>الوقت المتبقي لتخرج دفعة وطن</b></p>
+                            </div>
+                          <div class="container">
+                            <div class="a">
+                             <div class="number"><b>Day</b>s</div>
+                             <div class="number">${days}</div>
+                            </div>
+                            <div class="b">
+                             <div>:</div>   
+                             <div>:</div>   
+                            </div>
+                            <div class="a">
+                             <div class="number"><b>Hour</b>s</div>
+                             <div class="number">${hours}</div>
+                            </div>
+                            <div class="b">
+                             <div>:</div>   
+                             <div>:</div>   
+                            </div>
+                            <div class="a">
+                             <div class="number"><b>Min</b>s</div>
+                             <div class="number">${minutes}</div>
+                            </div>
+                            <div class="b">
+                             <div>:</div>   
+                             <div>:</div>   
+                            </div>
+                            <div class="a">
+                             <div class="number"><b>Sec</b>s</div>
+                             <div class="number">${seconds}</div>   
+                            </div>
+                          </div>
+                          
+                    </div>
+
+                        `
+                )
+
+                demo.append(div)
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    demo.html("")
+                    let div = $(
+                        `
+                    <div class="all" style="padding:10px">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>   
+                        مبارك تخرجكم
+                        </div>
+                        `
+                    )
+                    demo.append(div)
+                    // document.getElementById("demo").innerHTML = "مبارك تخرجكم";
+                }
+            }, 1000);
+        </script>
+
+</body>
+
+</html>
